@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Solution
+{
+public:
+    int arrayPairSum(vector<int> &nums)
+    {
+        int total = 0;
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i += 2)
+        {
+            total += nums[i];
+        }
+
+        return total;
+    }
+};
+
+int main()
+{
+    Solution sol;
+    vector<int> nums = {1, 4, 3, 2};
+    cout << sol.arrayPairSum(nums) << endl;
+}

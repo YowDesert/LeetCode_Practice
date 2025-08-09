@@ -7,35 +7,32 @@
 
 using namespace std;
 
+double dp[201][201];
 class Solution
 {
 public:
-    unordered_map<int, unordered_map<int, double>> memo;
-
-    double dp(int a, int b)
+    double soup(int A, int B)
     {
-        if (a <= 0 && b <= 0)
+        if (A <= 0 && B <= 0)
             return 0.5;
-        if (a <= 0)
-            return 1.0;
-        if (b <= 0)
-            return 0.0;
-        if (memo[a][b])
-            return memo[a][b];
+        if (A <= 0)
+            return 1;
+        if (B <= 0)
+            return 0;
 
-        memo[a][b] = 0.25 * (dp(a - 4, b) +
-                             dp(a - 3, b - 1) +
-                             dp(a - 2, b - 2) +
-                             dp(a - 1, b - 3));
-        return memo[a][b];
+        if (dp[A][B] != -1)
+            return dp[A][B];
+
+        dp[A][B] = 0.25 * (soup(A - 100, B) + soup(A - 75, B - 25) + soup(A - 50, B - 50) + soup(A - 25, B - 75));
+        return dp[A][B];
     }
 
     double soupServings(int n)
     {
         if (n >= 4800)
-            return 1.0;
-        int N = ceil(n / 25.0);
-        return dp(N, N);
+            return 1;
+        int New_n = ceil(n / 25);
+        return dp[New_n][New_n] = soup(New_n, New_n);
     }
 };
 
