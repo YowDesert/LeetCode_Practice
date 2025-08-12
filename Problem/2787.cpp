@@ -4,14 +4,12 @@
 #include <math.h>
 using namespace std;
 static const int MOD = 1'000'000'007;
-// 10 2
-//      0   1   2   3   4   5
-// 0    1   4   9
-// 1    5   10
-// 2    13
-// 3
-// 4
-// 5
+
+//
+// 為什麼 dp[0] = 1？
+// dp[0] = 1 代表「湊出 0」有一種方法，就是不選任何數字。
+
+// 這是 DP 初始化的基礎。
 
 class Solution
 {
