@@ -9,22 +9,31 @@ class Solution
 public:
     string longestCommonPrefix(vector<string> &strs)
     {
-        int VecSize = strs.size();
-        int StringSize = strs[0].size();
+        if (strs.empty())
+            return "";
 
-        string SameChar = strs[0];
+        string ans;
+        int index = 0;
 
-        for (int i = 0; i < VecSize; i++)
+        while (true)
         {
-            for (int j = 0; j < StringSize; j++)
+            char c;
+            if (index < strs[0].size())
+                c = strs[0][index];
+            else
+                break;
+
+            for (int i = 1; i < strs.size(); i++)
             {
-                if (SameChar[j] != strs[i][j])
-                {
-                    SameChar.erase(j);
-                }
+                if (index >= strs[i].size() || strs[i][index] != c)
+                    return ans;
             }
+
+            ans.push_back(c);
+            index++;
         }
-        return SameChar;
+
+        return ans;
     }
 };
 
