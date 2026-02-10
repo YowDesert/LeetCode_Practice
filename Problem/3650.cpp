@@ -29,7 +29,7 @@ public:
 
         while (!pq.empty())
         {
-            auto [d, u] = pq.top();
+            auto [d, u] = pq.top();     
             pq.pop();
             if (d != dist[u])
                 continue;
